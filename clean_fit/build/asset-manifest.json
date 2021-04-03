@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8966103d.chunk.css",
+    "main.js": "/static/js/main.2fcf3ca3.chunk.js",
+    "main.js.map": "/static/js/main.2fcf3ca3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7e14058a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7e14058a.js.map",
+    "static/css/2.d208ffc4.chunk.css": "/static/css/2.d208ffc4.chunk.css",
+    "static/js/2.9d809ff3.chunk.js": "/static/js/2.9d809ff3.chunk.js",
+    "static/js/2.9d809ff3.chunk.js.map": "/static/js/2.9d809ff3.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.93b0d6676874ab1175c7aaa6fbb1e282.js": "/precache-manifest.93b0d6676874ab1175c7aaa6fbb1e282.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d208ffc4.chunk.css.map": "/static/css/2.d208ffc4.chunk.css.map",
+    "static/css/main.8966103d.chunk.css.map": "/static/css/main.8966103d.chunk.css.map",
+    "static/media/Calender.png": "/static/media/Calender.95b56f23.png",
+    "static/media/Clean-Fit (1).png": "/static/media/Clean-Fit (1).2d461fe6.png",
+    "static/media/Clean-Fit (2).png": "/static/media/Clean-Fit (2).0dd685ec.png",
+    "static/media/Clean-Fit (3).png": "/static/media/Clean-Fit (3).68627cda.png",
+    "static/media/Clean-Fit (4).png": "/static/media/Clean-Fit (4).ba02f7e6.png",
+    "static/media/index.css": "/static/media/Clean-Fit (5).f70e0f32.png",
+    "static/media/Clean-Fit (6)-cutout.png": "/static/media/Clean-Fit (6)-cutout.d1edf2c2.png",
+    "static/media/Clean-Fit.png": "/static/media/Clean-Fit.3bd2e62c.png",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/distance.jpg": "/static/media/distance.ac5b572c.jpg",
+    "static/media/streak.png": "/static/media/streak.e4488e92.png"
+  }
+}
