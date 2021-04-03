@@ -16,7 +16,7 @@ class About extends React.Component {
                 <img src={aboutImage} className="about-image"/>
                 <p>
                     <h5 style={{fontWeight: 'bold'}}>
-                        Plogging is a combination of jogging with picking up litter (Swedish: plocka upp). It started as an organised activity in Sweden around 2016 and spread to other countries in 2018, following increased concern about plastic pollution. As a workout, it provides variation in body movements by adding bending, squatting and stretching to the main action of running, hiking, or walking.
+                        The entire concept of Clean Fit is a combination of jogging with picking up litter. The concept first started  as an organised activity in Sweden around 2016, following increased concern about plastic pollution. As a workout, it provides variation in body movements by adding bending, squatting and stretching to the main action of running, hiking, or walking.
                     </h5>
                 </p>
                 <p><h4 style={{fontWeight: 'bold'}}>And now you can do it, too!</h4></p>
