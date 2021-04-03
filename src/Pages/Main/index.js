@@ -53,7 +53,7 @@ class MainPage extends PureComponent {
     return (
         <div>
             <Card style={CARD_STYLE1} headStyle={CARD_HEAD_STYLE} title="Where are you?">
-                <p style={{color: "white", marginLeft: "35vw", marginTop: "-3vh"}}>(Due to limited data points the origin is fixed for route calculation)</p>
+                <p style={{color: "white", marginLeft: "33vw", marginTop: "-3vh"}}>(Due to limited data points the origin is fixed for route calculation)</p>
                 <PlogMap
                     coordinates={coordinates}
                     distance={distance}
