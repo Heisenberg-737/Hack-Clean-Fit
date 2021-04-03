@@ -1,0 +1,21 @@
+.home-page {
+    position: relative;
+}
+
+.buttons-container {
+    float: right;
+    position: absolute;
+    color: black;
+    font-weight: 400;
+    height: 200px;
+    text-align: center;
+    z-index: 2;
+    right: 15vw;
+    top: 40vh;
+}
+
+.buttons-container button{
+    cursor: pointer;
+    margin: 5px;
+    margin-bottom: 20px;
+}

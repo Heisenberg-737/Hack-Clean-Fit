@@ -1,0 +1,22 @@
+.ant-page-header-heading-title {
+  float: none;
+  /* color: white; */
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #2274a5;
+  /* color: white; */
+}
+
+.main-container {
+  width: 70vw;
+  min-width: 300px;
+  max-width: 800px;
+  align-self: center;
+  min-height: calc(100vh - 64px);
+}
+

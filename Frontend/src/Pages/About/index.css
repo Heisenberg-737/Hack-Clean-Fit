@@ -1,0 +1,30 @@
+.about {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.about-image {
+    height: 50px;
+    margin-top: 5vh;
+    margin-bottom: 25px;
+}
+
+.about p {
+    font-weight: bold;
+    color: white;
+}
+
+.CTA-btn {
+    margin-left: 35vw;
+    margin-bottom: 30px;
+}
+
+.CTA-btn h6 {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px white solid;
+}
+
+.made-by {
+    padding-left: 10px;
+}

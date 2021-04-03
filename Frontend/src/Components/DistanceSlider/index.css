@@ -1,0 +1,6 @@
+/* Get rid of FF's outline */
+.distance-slider * {
+    outline: none;
+    width: 800px;
+    /* padding-left: 20vw; */
+}
