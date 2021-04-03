@@ -85,7 +85,7 @@ class LandingPage extends React.Component {
             <Link to='/about'>
                 <button style={{display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 20px', backgroundColor: 'white', border: 'none', width: '205px' }}>
                     <img src={aboutImage} style={{height: '30px', width: '65px', position: 'relative', float: 'left', backgroundColor: 'white'}} alt="About Image"/>
-                    <strong style={{whiteSpace: 'nowrap'}}>ABOUT US</strong>
+                    <strong style={{whiteSpace: 'nowrap'}}>ABOUT</strong>
                 </button>
             </Link>
 
