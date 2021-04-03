@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import MainPage from './Pages/Main/';
-import MapPage from './Pages/Map/';
+import MainPage from './Pages/Main/index';
+import MapPage from './Pages/Map/index';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import RouteVerification from './Components/RouteVerification';
 import { Navbar } from 'react-bootstrap';
