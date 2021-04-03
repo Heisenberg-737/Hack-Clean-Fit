@@ -19,9 +19,34 @@ service = Directions(
 # frontend routes
 
 
-# @app.route('/', methods=["GET", "POST"])
-# def catch():
-#     return app.send_static_file('index.html')
+@app.route('/', methods=["GET", "POST"])
+def catch():
+    return app.send_static_file('index.html')
+
+
+@app.route('/go', methods=["GET", "POST"])
+def catch_go():
+    return app.send_static_file('index.html')
+
+
+@app.route('/dashboard', methods=["GET", "POST"])
+def catch_dashboard():
+    return app.send_static_file('index.html')
+
+
+@app.route('/history', methods=["GET", "POST"])
+def catch_history():
+    return app.send_static_file('index.html')
+
+
+@app.route('/about', methods=["GET", "POST"])
+def catch_about():
+    return app.send_static_file('index.html')
+
+
+@app.route('/signin', methods=["GET", "POST"])
+def catch_signin():
+    return app.send_static_file('index.html')
 
 # backend routes and functions
 
