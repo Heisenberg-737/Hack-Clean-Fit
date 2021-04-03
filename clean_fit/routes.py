@@ -1,29 +1,29 @@
 import json
 from flask import request, jsonify
-from clean_fit.models import Users, Route, PlaceInfo, CleanCityIndex
+from clean_fit.models import Users, Route, PlaceInfo, CleanCityIndex, History
 from clean_fit import app, db
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from mapbox import Directions
 import os
 import math
 import random
 import datetime
 from copy import deepcopy
+import datetime
 # from clean_fit.data_parser import parse_geo_info, parse_measures
 
 service = Directions(
     access_token='pk.eyJ1IjoicHJhbmF5a290aGFyaSIsImEiOiJja21kdTllMGoyY2VjMnBzOXA2eXBqZjJoIn0.v69swMJIzyBvXgbMHvOgGQ')
 
-CORS(app, resources={r'/cleanrun*': {'origins': '*'}})
 
-#frontend routes
+# frontend routes
 
 
 # @app.route('/', methods=["GET", "POST"])
 # def catch():
 #     return app.send_static_file('index.html')
 
-#backend routes and functions
+# backend routes and functions
 
 def parsing_run(args):
     distance = args.get('distance', 2.0)
@@ -65,13 +65,76 @@ def point_selector(distance, long, lat):
     return [pointA, pointB, pointC, pointAC, pointA]
 
 
-@app.route('/backend/cleanrun', methods=['GET'])
+@app.route('/backend/login', methods=['GET', 'POST'])
+def google_login():
+    content = request.get_json()
+    uid = content["uid"]
+    name = content["name"]
+    email = content["email"]
+
+    user = Users.query.filter(Users.email == email).first()
+
+    if user is None:
+        user_in = Users(uid=uid, email=email, name=name)
+        db.session.add(user_in)
+        db.session.commit()
+
+    return "Successful", 400
+
+
+@app.route('/backend/history', methods=['GET', 'POST'])
+def history():
+    content = request.get_json()
+    uid = content["uid"]
+
+    runs = History.query.filter(History.uid == uid).all()
+
+    List = []
+    Dict = {}
+
+    for run in runs:
+        Dict = {
+            'distance': run.distance,
+            'date': run.date,
+            'calories': run.calories
+        }
+        List.append(Dict)
+
+    return json.dumps(List)
+
+
+@app.route('/backend/totalrun', methods=['GET', 'POST'])
+def total_run():
+    content = request.get_json()
+    uid = content["uid"]
+    runs = History.query.filter(History.uid == uid).all()
+
+    List = []
+    Dict = {}
+    total_distance = 0
+    total_calories = 0
+
+    for run in runs:
+        total_distance = total_distance + run.distance
+        total_calories = total_calories + run.calories
+
+    Dict = {
+        'total_distance': total_distance,
+        'total_calories': total_calories
+    }
+    List.append(Dict)
+
+    return json.dumps(List)
+
+
+@app.route('/backend/cleanrun', methods=['GET', 'POST'])
 def clean_run():
     content = request.get_json()
     #print("Content Here : ",request.get_json())
     distance = content["userInputs"]["distance"]
     long = content["userInputs"]["longitude"]
     lat = content["userInputs"]["latitude"]
+    uid = content["userInputs"]["uid"]
     # print("DISTANCE : ", distance)
     # distance = 2.0
     # long = 77.22
@@ -80,6 +143,12 @@ def clean_run():
     # distance, long, lat = parsing_run(request.args)
     # except ValueError:
     #     return jsonify("Invalid data format")
+    calories = 68*distance
+    date = datetime.datetime.now()
+    date = date.strftime("%x")
+    run = History(uid=uid, distance=distance, date=date, calories=calories)
+    db.session.add(run)
+    db.session.commit()
 
     points = point_selector(distance, long, lat)
 
@@ -103,7 +172,7 @@ def clean_run():
 
     response = augmented_coords.to_response()
     response['distance'] = path_json['routes'][0]['distance']
-    
+
     return jsonify(response)
 
 # @app.route('/testroute', methods=["GET", "POST"])
@@ -144,7 +213,8 @@ class AugmentedCoordinates:
     def construct_ccis(self):
         i = 0
         for coord in self.coordinates:
-            geo_infos = PlaceInfo.query.filter(PlaceInfo.geometry.contains(f'POINT({coord[0]} {coord[1]})')).all()
+            geo_infos = PlaceInfo.query.filter(
+                PlaceInfo.geometry.contains(f'POINT({coord[0]} {coord[1]})')).all()
             node = Coordinate(coord, geo_infos)
             self.augmented_coordinates.append(node)
             if i != 0:
@@ -173,7 +243,7 @@ class AugmentedCoordinates:
 
             data = {'long': ac.coordinate[0],
                     'lat': ac.coordinate[1]
-            }
+                    }
             response['coordinates'].append(data)
 
         return response
@@ -192,7 +262,8 @@ class Coordinate:
     def day_cci(self, day):
         for geo_info in self.geo_infos:
             if geo_info.osm_id is not None:
-                self.ccis.update(CleanCityIndex.query.filter(CleanCityIndex.geo_info == geo_info).all())
+                self.ccis.update(CleanCityIndex.query.filter(
+                    CleanCityIndex.geo_info == geo_info).all())
 
     def __repr__(self):
         resp1 = f'\nCoordinate: {self.coordinate[0]} {self.coordinate[1]} CCIS: {self.ccis_with_next}'

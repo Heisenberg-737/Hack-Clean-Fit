@@ -3,11 +3,20 @@ from geoalchemy2 import Geometry
 import datetime
 
 class Users(db.Model):
+    __bind_key__ = 'auth'
     __tablename__ = 'Users'
     uid = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
 
+class History(db.Model):
+    __bind_key__ = 'auth'
+    __tablename__ = 'History'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    uid = db.Column(db.Integer)
+    distance = db.Column(db.Integer)
+    date = db.Column(db.String(100))
+    calories = db.Column(db.String(100))
 
 class Route(db.Model):
     __tablename__ = 'route'
