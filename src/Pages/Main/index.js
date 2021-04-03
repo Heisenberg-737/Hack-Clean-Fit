@@ -22,7 +22,7 @@ export const CARD_STYLE = {"marginBottom": "24px"};
 const CARD_STYLE1 = {
     "marginBottom": "50px",
 };
-export const CARD_HEAD_STYLE = {"fontSize": "24px", "lineHeight": "1", "textAlign": "center", "margin":"20px"};
+export const CARD_HEAD_STYLE = {"fontSize": "24px", "lineHeight": "1", "textAlign": "center", "margin":"20px", "color": "white"};
 
 class MainPage extends PureComponent {
 
@@ -53,6 +53,7 @@ class MainPage extends PureComponent {
     return (
         <div>
             <Card style={CARD_STYLE1} headStyle={CARD_HEAD_STYLE} title="Where are you?">
+                <p style={{color: "white", marginLeft: "35vw", marginTop: "-3vh"}}>(Due to limited data points the origin is fixed for route calculation)</p>
                 <PlogMap
                     coordinates={coordinates}
                     distance={distance}
