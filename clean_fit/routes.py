@@ -67,10 +67,19 @@ def point_selector(distance, long, lat):
 
 @app.route('/backend/cleanrun', methods=['GET'])
 def clean_run():
-    try:
-        distance, long, lat = parsing_run(request.args)
-    except ValueError:
-        return jsonify("Invalid data format")
+    content = request.get_json()
+    #print("Content Here : ",request.get_json())
+    distance = content["userInputs"]["distance"]
+    long = content["userInputs"]["longitude"]
+    lat = content["userInputs"]["latitude"]
+    # print("DISTANCE : ", distance)
+    # distance = 2.0
+    # long = 77.22
+    # lat = 28.67
+
+    # distance, long, lat = parsing_run(request.args)
+    # except ValueError:
+    #     return jsonify("Invalid data format")
 
     points = point_selector(distance, long, lat)
 
